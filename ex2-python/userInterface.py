@@ -58,9 +58,24 @@ def __main__():
     # Perform Machine Learning
     ###########################
 
-    thetaLogisticReg = optimize.minimize(cost, x0 = initialTheta, args = (Xnormalized, y)) 
+    # Using optimization function Without using gradient 
+
+    theta = optimize.fmin_bfgs(cost, x0 = initialTheta, args = (Xnormalized, y)) 
     
-    print 'Theta:', thetaLogisticReg 
+
+    raw_input()
+    print 'Theta:', theta 
+    raw_input()
+
+    p = predict(theta,Xnormalized)
+
+    print 'Training accuracy: ', float(mean(p == y) * 100)
+
+    # Using optimization function using gradient 
+
+#    theta = optimize.fmin_bfgs(cost, x0 = initialTheta, fprime = gradDes, args = (X, y)) 
+    
+#    print 'Theta:', theta 
 
     exit(0)
 
