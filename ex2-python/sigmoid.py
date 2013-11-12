@@ -8,4 +8,4 @@
 from pylab import *
 
 def sigmoid(z):
-    return (1/(1+e**(-z)))
+    return (1/(1+exp(-1*z)))
